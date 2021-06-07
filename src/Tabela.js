@@ -9,8 +9,8 @@ function CabecalhoTabela() {
     return (
         <thead>
             <tr>
-                <td>Nome</td>
-                <td>Apelido</td>
+                <th>Nome</th>
+                <th>Apelido</th>
             </tr>
         </thead>
     )

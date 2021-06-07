@@ -5,9 +5,10 @@
 import React from 'react'
 //import do componente 'Tabela'
 import Tabela from './Tabela'
+//import do 'Formulario'
+import Formulario from './Formulario'
 //import CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 
 class App extends React.Component {
    //esta variável é passível de ser alterado o seu conteúdo
@@ -36,7 +37,10 @@ class App extends React.Component {
     ]
   }
 
-  //método que sabe identificar o 'aluno' que deverá ser retirado da tabela
+  /**
+   * método que sabe identificar o 'aluno' que deverá ser retirado da tabela
+   * @param {*} index - dados do aluno a remover
+   */
   removeAluno=(index)=>{
     //recuperar os alunos que estão representados na tabela 
     const {alunos} = this.state
@@ -51,6 +55,17 @@ class App extends React.Component {
     });
   }
 
+  /**
+   * Adiciona os dados do novo aluno ao 'state'
+   * @param {*} novoAluno - dados do novo aluno, recebidos do formulário 
+   */
+  addAluno = (novoAluno) =>{
+    this.setState({
+      alunos:[...this.state.alunos, novoAluno] 
+      //... é um operador que junta a um array, um novo elemento
+    });
+  }
+
   //todas as classes terão, obrigatoriamente, um método chamado 'render'
   render() {
     //definir o acesso à variável com dados dos alunos
@@ -58,7 +73,12 @@ class App extends React.Component {
 
   return(
     <div className = "container" > {/*e apanas consegue devolver um Único Objeto*/ }
-      <h1>Lista com dados dos alunos</h1>
+      <h1>Processar os daods dos alunos...</h1>
+      <h4>Lista com dados dos alunos</h4>
+      {/** este Formulário irá receber os dados de um nome e apelido do aluno */}
+      {/**o parâmetro 'dadosRecolhidos' é um parâmetro de 'saída'
+       * I.e., serve para retirar do 'Formulário' os dados que foram lá recolhidos*/}
+      <Formulario dadosRecolhidos={this.addAluno} />
       <br />
       {/* 'dadosAlunos' é uma variável de entrada no componente 
                 Naturalmente, do lado do componente existirá um parâmetro para receber estes dados*/}
