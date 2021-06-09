@@ -60,7 +60,7 @@ class Formulario extends React.Component{
                                 value={apelido}
                                 onChange={this.handlerAdicao}
                                /><br />
-                <input type="submit" 
+                <input type="button" 
                        className="btn btn-primary"
                        value ="Adicionar"
                        onClick={this.submitForm}/>
